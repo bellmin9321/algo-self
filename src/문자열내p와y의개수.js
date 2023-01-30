@@ -4,9 +4,9 @@ function solution(s) {
   let countY = 0;
 
   for (let i = 0; i < s.length; i++) {
-    if (lowerS[i] === "p") {
+    if (lowerS[i] === 'p') {
       countP++;
-    } else if (lowerS[i] === "y") {
+    } else if (lowerS[i] === 'y') {
       countY++;
     }
   }

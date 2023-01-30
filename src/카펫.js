@@ -1,11 +1,10 @@
 function solution(brown, yellow) {
-    
   if (yellow % 2 === 1) {
-      return [yellow + 2, 3]
+    return [yellow + 2, 3];
   } else {
-      if (yellow / 2 % 2 === 1) {
-          return [yellow / 2 + 2, 4];
-      }
+    if ((yellow / 2) % 2 === 1) {
+      return [yellow / 2 + 2, 4];
+    }
   }
 }
 

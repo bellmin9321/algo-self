@@ -1,5 +1,5 @@
 function solution(x) {
-  return x % eval([...x.toString()].join("+")) ? false : true;
+  return x % eval([...x.toString()].join('+')) ? false : true;
 }
 
 function Harshad(n) {
