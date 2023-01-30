@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "prettier": "^2.8.3"
+  }
+}
