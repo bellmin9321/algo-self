@@ -19,7 +19,7 @@ function solution(n, t, m, p) {
   let res = '';
   let num = 0;
   let seq = '';
-  
+
   while (res.length < t) {
     if (seq.length >= m) {
       res += seq[p - 1];
