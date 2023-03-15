@@ -1,5 +1,5 @@
 // my solution
-var largestAltitude = function(gain) {
+var largestAltitude = function (gain) {
   const ans = [0];
 
   for (let i in gain) {
