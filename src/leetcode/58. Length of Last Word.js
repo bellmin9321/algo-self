@@ -15,7 +15,6 @@ var lengthOfLastWord = function (s) {
     word += trimS[i];
     if (i === trimS.length - 1) result.push(word);
   }
-  console.log(result);
 
   return result[result.length - 1].length;
 };
