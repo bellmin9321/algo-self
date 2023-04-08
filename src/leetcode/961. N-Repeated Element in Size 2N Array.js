@@ -1,5 +1,5 @@
 // my solution
-var repeatedNTimes = function(nums) {
+var repeatedNTimes = function (nums) {
   const n = nums.length / 2;
   const map = new Map();
 
@@ -13,7 +13,7 @@ var repeatedNTimes = function(nums) {
 };
 
 // best
-var repeatedNTimes = function(A) {
+var repeatedNTimes = function (A) {
   let lookup = new Set();
 
   for (let n of A) {
@@ -25,16 +25,16 @@ var repeatedNTimes = function(A) {
 };
 
 // 2nd
-var repeatedNTimes = function(A) {
+var repeatedNTimes = function (A) {
   const map = {};
-  
+
   for (let i = 0; i < A.length; i++) {
-      if (A[i] in map) {
-          return A[i];
-      } else {
-          map[A[i]] = 0;
-      }
+    if (A[i] in map) {
+      return A[i];
+    } else {
+      map[A[i]] = 0;
+    }
   }
-  
+
   return 0;
 };
