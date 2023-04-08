@@ -1,49 +1,52 @@
 // my solution
 function solution(numbers) {
   return numbers.map(num => {
-      let temp = num + 1;
-      
-      while((num ^ temp).toString(2).replaceAll('0', '').length > 2) temp++;
-      
-      return temp;
-  })
+    let temp = num + 1;
+
+    while ((num ^ temp).toString(2).replaceAll('0', '').length > 2) temp++;
+
+    return temp;
+  });
 }
 
 // Try 2
 function solution(numbers) {
   return numbers.map(num => {
-      let temp = num + 1;
-      
-      while (true) {
-          let tBit = temp.toString(2);
-          let nBit = num.toString(2).padStart(tBit.length, '0');
-          let count = 0;
-          
-          for (let i = 0; i < tBit.length; i++) {
-              if (nBit[i] !== tBit[i]) {
-                  count++;
-              }
-              if (count > 2) break;
-          }
-          
-          if (count <= 2) return temp;
-          temp++;
+    let temp = num + 1;
+
+    while (true) {
+      let tBit = temp.toString(2);
+      let nBit = num.toString(2).padStart(tBit.length, '0');
+      let count = 0;
+
+      for (let i = 0; i < tBit.length; i++) {
+        if (nBit[i] !== tBit[i]) {
+          count++;
+        }
+        if (count > 2) break;
       }
-  })
+
+      if (count <= 2) return temp;
+      temp++;
+    }
+  });
 }
 
 // Try3
 function solution(numbers) {
   return numbers.map(num => {
-      const bit = num.toString(2);
-      
-      if (num % 2 === 0) return parseInt(+bit + 1, 2);
-      
-      const zeroIndex = bit.lastIndexOf('0');
-      const plus = zeroIndex >= 0 ? '1'.padEnd(bit.length - zeroIndex, '0') : '1'.padEnd(bit.length + 1, '0');
+    const bit = num.toString(2);
 
-      return parseInt(+bit + +plus - (parseInt(plus, 2) / 2).toString(2), 2);
-  })
+    if (num % 2 === 0) return parseInt(+bit + 1, 2);
+
+    const zeroIndex = bit.lastIndexOf('0');
+    const plus =
+      zeroIndex >= 0
+        ? '1'.padEnd(bit.length - zeroIndex, '0')
+        : '1'.padEnd(bit.length + 1, '0');
+
+    return parseInt(+bit + +plus - (parseInt(plus, 2) / 2).toString(2), 2);
+  });
 }
 
 /*
