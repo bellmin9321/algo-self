@@ -10,7 +10,7 @@
 
 - 순번의 시작은 0이 아니라 1입니다.
 */
-const foo = (numbers) => {
+const foo = numbers => {
   const nums = numbers.split(' ');
 
   const odds = nums.filter(v => v % 2 !== 0); // 홀수
@@ -18,4 +18,4 @@ const foo = (numbers) => {
   const onlyOne = odds.length === 1 ? odds[0] : evens[0]; // 1개만 존재하는 수
 
   return nums.findIndex(v => v === onlyOne) + 1;
-}
+};

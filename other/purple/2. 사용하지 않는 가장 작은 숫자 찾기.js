@@ -11,7 +11,7 @@
 - 정렬되지 않는 배열을 넣어도 동작해야함
 - 중복된 숫자가 있는 경우도 동작해야함
 */
-const foo = (ids) => {
+const foo = ids => {
   const sorted = ids.sort((a, b) => a - b);
 
   for (let i = 0; i < sorted.length; i++) {
@@ -19,6 +19,6 @@ const foo = (ids) => {
       return i;
     }
   }
-  
+
   return ids.length;
-}
+};

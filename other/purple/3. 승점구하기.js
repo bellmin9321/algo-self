@@ -11,7 +11,7 @@
 - 0점에서 최대 4점까지 입력합니다.
 */
 
-const foo = (games) => {
+const foo = games => {
   let sum = 0;
 
   for (const game of games) {
@@ -25,4 +25,4 @@ const foo = (games) => {
   }
 
   return sum;
-}
+};

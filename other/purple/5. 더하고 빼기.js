@@ -1,31 +1,28 @@
-const solution = (n) => {
-  // 아래 계산의 결과값은 항상 9의 배수가 나오므로 100 이하면 return 'apple' 
+const solution = n => {
+  // 아래 계산의 결과값은 항상 9의 배수가 나오므로 100 이하면 return 'apple'
   // n이 100보다 클 경우 재귀를 이용해 수를 깎으면서 100이하 수로 만들어 return 'apple'
   n -= [...`${n}`].reduce((a, b) => a + b * 1, 0);
 
   return n > 100 ? solution(n) : 'apple';
-}
+};
 
-
-
-const solution2 = (n) => {
+const solution2 = n => {
   // 아래 계산의 결과값은 항상 9의 배수가 나오므로 9로 나눈 나머지가 0이면 'apple'을 return 하면됨
   n -= [...`${n}`].reduce((a, b) => a + b * 1, 0);
 
-  return n % 9 === 0 ? 'apple' : 'Absolutely no other value below 10000'
-}
-
+  return n % 9 === 0 ? 'apple' : 'Absolutely no other value below 10000';
+};
 
 // 다른 풀이: 재귀 이용 && fruits 객체 선언해서 푼 풀이
-const bar = (n) => {
+const bar = n => {
   n -= [...`${n}`].reduce((a, b) => a + b * 1, 0);
-  
+
   if (n <= 100) {
     return fruits[n];
   } else {
     return bar(n);
   }
-}
+};
 
 /*
 각 자리의 숫자를 더한값을 원래 숫자에서 빼고 결과가 하단에 나열한 과일코드가 나올때까지 계산하는 코드를 작성해주세요.

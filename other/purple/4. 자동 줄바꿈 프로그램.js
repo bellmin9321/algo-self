@@ -19,7 +19,7 @@
 - 구글에서 “한글입숨”으로 검색하여 테스트 문장을 생성할 수 있습니다.
 */
 
-const foo = (str) => {
+const foo = str => {
   let ans = '';
   let sum = 0;
   let isKrIncluded = false;
@@ -28,7 +28,7 @@ const foo = (str) => {
 
   for (let i = 0; i < str.length; i++) {
     if (sum === 0 && str[i] === ' ') continue;
-    
+
     if (checkKorean.test(str[i])) {
       sum += 2;
       isKrIncluded = true;
@@ -53,4 +53,4 @@ const foo = (str) => {
   }
 
   return ans;
-}
+};

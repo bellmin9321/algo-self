@@ -9,7 +9,7 @@
 
 - 입력받은 순서를 유지해서 출력해주세요.
 */
-const foo = (users) => {
+const foo = users => {
   let ans = [];
 
   for (const user of users) {
@@ -17,9 +17,9 @@ const foo = (users) => {
   }
 
   return ans;
-}
+};
 
 // 다른 풀이
-const bar = (users) => {
+const bar = users => {
   return users.filter(user => user.length === 4);
-}
+};
