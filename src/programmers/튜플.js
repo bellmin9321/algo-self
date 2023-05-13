@@ -1,3 +1,19 @@
+// 2번째 풀이: ⭕️ Solved(30min)
+function solution(s) {
+  const ans = [];
+  const arr = s
+    .slice(2, -2)
+    .split('},{')
+    .sort((a, b) => a.length - b.length);
+  const newArr = arr.map(v => v.split(','));
+
+  for (let i = 0; i < newArr.length; i++) {
+    newArr[i].forEach(v => ans.push(+v));
+  }
+
+  return [...new Set(ans)];
+}
+
 // 내 풀이: 너무 지저분함 > 리팩토링 필요
 function solution(s) {
   const answer = [];
