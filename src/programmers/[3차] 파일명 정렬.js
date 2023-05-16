@@ -1,3 +1,44 @@
+// 2번째 solution: ❌ NotSolved(1h20m) -> 기본 테스트만 통과, 시간 초과 및 해결책 x
+function solution(files) {
+  let newArr = files.map((file, i) => {
+      let HEAD, NUMBER, TAIL;
+      let HEAD_END_INDEX;
+      let NUMBER_END_INDEX;
+      
+      for (let i = 1; i < file.length; i++) {
+          if (isNaN(file[i - 1]) && !isNaN(file[i]) && !HEAD_END_INDEX) {
+
+              HEAD = file.slice(0, i);
+              HEAD_END_INDEX = i;
+          } else if (!isNaN(file[i - 1]) && isNaN(file[i]) && !NUMBER_END_INDEX) {
+              NUMBER = file.slice(HEAD_END_INDEX, i);
+              NUMBER_END_INDEX = i;
+          }
+      }
+      
+      if (NUMBER) {
+          TAIL = file.slice(NUMBER_END_INDEX);
+      } else {
+          NUMBER = file.slice(HEAD_END_INDEX);
+          TAIL = '';
+      }
+      
+      return [HEAD, NUMBER, TAIL];
+  })
+  
+  let flag = true;
+  
+  newArr.sort((a, b) => {
+      if (a[0].toLowerCase() !== b[0].toLowerCase()) flag = false; 
+      
+      return a[0].toLowerCase() < b[0].toLowerCase() ? -1 : 1
+  });
+  
+  newArr = flag ? newArr.sort((a, b) => +a[1] - +b[1]) : newArr;
+  
+  return newArr.map(v => v.join(''))
+}
+
 // my solution: ❌ NotSolved -> 시간 초과 및 힌트 봄
 function solution(files) {
   return files.sort((a, b) => {
