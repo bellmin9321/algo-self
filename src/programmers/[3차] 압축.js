@@ -1,3 +1,23 @@
+// 2번째 풀이: ⭕️ Solved(55min) 23.05.15
+function solution(msg) {
+  const ans = [];
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const dict = alphabet.split('');
+
+  for (let i = dict.length - 1; i >= 0; i--) {
+    if (!msg.length) break;
+
+    if (msg.indexOf(dict[i]) === 0) {
+      msg = msg.replace(dict[i], '');
+      ans.push(dict.indexOf(dict[i]) + 1);
+      dict.push(dict[i] + msg[0]);
+      i = dict.length;
+    }
+  }
+
+  return ans;
+}
+
 // my soltuion: 소요 시간(약 1h30m)
 // 'A'.charCodeAt() = '65', 'Z'.charCodeAt() = '90',
 function solution(msg) {
