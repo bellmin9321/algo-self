@@ -1,3 +1,19 @@
+// 2번째 풀이: ⭕️ Solved(20min) 23.05.15
+function solution(n, t, m, p) {
+  let ans = '';
+  let str = '';
+
+  for (let i = 0; i < t * m; i++) {
+    str += i.toString(n);
+  }
+
+  for (let j = p - 1; j < str.length; j += m) {
+    ans += str[j];
+  }
+
+  return ans.toUpperCase().slice(0, t);
+}
+
 // my solution
 function solution(n, t, m, p) {
   let ans = '';
