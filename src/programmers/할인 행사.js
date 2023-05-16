@@ -1,4 +1,26 @@
-// my solution
+// 2nd solution: ⭕️ Solved(40min)  23.05.14
+function solution(want, number, discount) {
+  let ans = 0;
+  const cache = {};
+
+  for (let i in want) {
+    cache[want[i]] = number[i];
+  }
+
+  for (let i = 0; i < discount.length - 9; i++) {
+    const copy = { ...cache };
+    const slice = discount.slice(i, i + 10);
+
+    slice.forEach(v => (copy[v] ? copy[v]-- : null));
+
+    const sum = Object.values(copy).reduce((a, b) => a + b);
+    if (sum === 0) ans++;
+  }
+
+  return ans;
+}
+
+// first solution
 function solution(want, number, discount) {
   const cache = {};
   let count = 0;
