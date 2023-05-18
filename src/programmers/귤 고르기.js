@@ -1,3 +1,27 @@
+// 2nd solution: ⭕️ Solved(15min) -> 풀이 속도 향상 (23.05.14)
+function solution(k, tangerine) {
+  let ans = 0;
+  const map = {};
+
+  for (let n of tangerine) {
+    map[n] = (map[n] || 0) + 1;
+  }
+
+  const sorted = Object.values(map).sort((a, b) => b - a);
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (k >= sorted[i]) {
+      k -= sorted[i];
+      ans++;
+    } else {
+      if (k > 0) ans++;
+      break;
+    }
+  }
+
+  return ans;
+}
+
 // my solution
 function solution(k, tangerine) {
   const cache = [0];
