@@ -1,4 +1,26 @@
-// my solution
+// 2번째 풀이: ❌ NotSolved(25/27 통과, 1hour)
+function solution(number, limit, power) {
+  let ans = 1; // 1은 미리 포함
+
+  for (let i = 2; i <= number; i++) {
+    let count = 2; // 자기 자신 미리 포함
+    let j = 2;
+
+    while (j <= i / 2) {
+      if (i % j === 0) count++;
+
+      if (count > limit) break;
+
+      j++;
+    }
+
+    ans += count > limit ? power : count;
+  }
+
+  return ans;
+}
+
+// my solution: ❌ NotSolved(테스트 시간 초과)
 function solution(number, limit, power) {
   const ans = [1];
 
