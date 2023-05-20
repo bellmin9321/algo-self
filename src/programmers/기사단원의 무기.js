@@ -1,4 +1,4 @@
-// 2번째 풀이: ❌ NotSolved(25/27 통과, 1hour)
+// 2번째 풀이: ❌ NotSolved(25/27 통과, 1hour) -> 최적화 문제 미해결
 function solution(number, limit, power) {
   let ans = 1; // 1은 미리 포함
 
