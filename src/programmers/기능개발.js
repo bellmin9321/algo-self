@@ -1,4 +1,23 @@
-// 내 풀이: 배열 메서드와 이중 for문 사용
+// 2번째 풀이: ⭕️ Solved(40min) 23.05.14
+function solution(progresses, speeds) {
+  const rest = progresses.map((v, i) => Math.ceil((100 - v) / speeds[i]));
+  const ans = [];
+
+  for (let i = 0; i < rest.length; i++) {
+    const biggerIdx = rest.findIndex(v => rest[i] < v);
+    if (biggerIdx < 0) {
+      // 이후에 더 이상 큰 값이 없을 때 나머지 요소 개수 카운트
+      ans.push(rest.length - i);
+      break;
+    }
+    ans.push(biggerIdx - i);
+    i = biggerIdx - 1;
+  }
+
+  return ans;
+}
+
+// 첫번째 풀이: 배열 메서드와 이중 for문 사용
 function solution(progresses, speeds) {
   // 100 - 진행률 = 남은 비율 -> 이 값을 speed로 나누면 걸리는 일 수이지만 나머지가 있으면 하루 더 해야하므로 Math.ceil로 +1된 값을 반환
   const rests = progresses.map((progress, i) =>
