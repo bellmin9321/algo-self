@@ -1,3 +1,21 @@
+// 2번째 풀이: ⭕️ Solved(20min) 23.05.15
+function solution(n, m, sections) {
+  if (n === 1) return sections.length;
+
+  let ans = 1;
+  let start = sections[0];
+
+  for (let i = 1; i < sections.length; i++) {
+    if (sections[i] - start < m) continue;
+    else {
+      start = sections[i];
+      ans++;
+    }
+  }
+
+  return ans;
+}
+
 // My solution
 function solution(n, m, section) {
   let sum = section[0] + m - 1;
@@ -11,6 +29,25 @@ function solution(n, m, section) {
   }
 
   return ans;
+}
+
+// New best
+function solution(n, m, section) {
+  let count = 0;
+  const arr = Array.from(Array(n + 1).fill(null));
+
+  section.forEach(el => {
+    arr[el] = 1;
+  });
+
+  section.forEach(el => {
+    if (arr[el]) {
+      arr.fill(null, el, el + m);
+      count++;
+    }
+  });
+
+  return count;
 }
 
 // best
