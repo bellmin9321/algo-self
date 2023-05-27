@@ -1,3 +1,29 @@
+// 2번째 풀이: ⭕️ Solved(10min) 23.05.15
+function solution(lottos, win_nums) {
+  const lank = {
+    6: 1,
+    5: 2,
+    4: 3,
+    3: 4,
+    2: 5,
+    1: 6,
+    0: 6,
+  };
+  let best = 0;
+  let plus = 0;
+
+  lottos.forEach(l => {
+    if (l === 0) {
+      best++;
+      plus++;
+    } else if (win_nums.includes(l)) best++;
+  });
+  const high = lank[best];
+  const low = lank[best - plus];
+
+  return [high, low];
+}
+
 // my solution
 function solution(lottos, win_nums) {
   const rank = {
