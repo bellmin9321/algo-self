@@ -1,3 +1,33 @@
+// 2번째 풀이: ⭕️ Solved(60min) 23.05.16
+// 한번만 순회하는게 빠르다는 hint 봄
+function solution(X, Y) {
+  let longer = X.length > Y.length ? X : Y;
+  let shorter = longer === X ? Y : X;
+  const cache = {};
+  let ans = '';
+
+  [...shorter].forEach(v => {
+    cache[v] = (cache[v] || 0) + 1;
+  });
+
+  for (let v of longer) {
+    if (cache[v]) {
+      cache[v] -= 1;
+      ans += v;
+    }
+  }
+
+  const commonNum = [...ans].sort((a, b) => b - a).join('');
+
+  if (commonNum) {
+    if (Number(commonNum) === 0) return '0';
+
+    return commonNum;
+  } else {
+    return '-1';
+  }
+}
+
 // my solution
 function solution(X, Y) {
   let ans = '';
