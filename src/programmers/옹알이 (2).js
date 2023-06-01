@@ -1,3 +1,21 @@
+// 2번째 풀이: ⭕️ Solved(60min)
+// 주어진 단어에서 발음 가능한 단어가 첫번째 요소(babble.indexOf(word) === 0)로 무조건 와야된다고 생각했고, 해당 발음 가능한 단어가 첫번째 요소로 존재하면 없어질 때까지 계속 소거해서 빈 문자열이 나오면 발음할 수 있는 단어고, 아니면 못하는 단어라고 생각해서 해결
+function solution(babbling) {
+  const words = ['aya', 'ye', 'woo', 'ma'];
+
+  return babbling.filter(b => {
+    if (words.some(v => b.includes(v + v))) return false;
+
+    while (words.some(v => b.indexOf(v) === 0)) {
+      words.forEach(v => {
+        if (b.indexOf(v) === 0) b = b.replace(v, '');
+      });
+    }
+
+    return b === '' ? true : false;
+  }).length;
+}
+
 // new solution
 function solution(babbling) {
   const babbles = ['aya', 'ye', 'woo', 'ma'];
