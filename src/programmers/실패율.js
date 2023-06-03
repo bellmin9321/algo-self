@@ -1,4 +1,22 @@
-// my solution
+// 2nd 풀이: ⭕️ Solved(40min)
+function solution(N, stages) {
+  let stage = 1;
+  let copy = [...stages];
+  const cache = {};
+
+  while (stage <= N) {
+    const failure = copy.filter(v => v === stage).length / copy.length;
+    cache[stage] = failure;
+    copy = copy.filter(v => v !== stage);
+    stage++;
+  }
+
+  return Object.entries(cache)
+    .sort((a, b) => b[1] - a[1])
+    .map(v => +v[0]);
+}
+
+// 1st 풀이: ⭕️ Solved
 function solution(N, stages) {
   const cache = {};
   let users = stages.length;
