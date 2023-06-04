@@ -1,3 +1,15 @@
+// 2번째 풀이: ⭕️ Solved(30min)
+function solution(participant, completion) {
+  const map = {};
+
+  participant.forEach(c => (map[c] = (map[c] || 0) + 1));
+  completion.forEach(c => map[c]--);
+
+  for (let name in map) {
+    if (map[name]) return name;
+  }
+}
+
 // my solution
 function solution(participant, completion) {
   const cache = {};
