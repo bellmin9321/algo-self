@@ -1,3 +1,30 @@
+// 2번째 풀이: ⭕️ Solved(30min) 23.05.14
+function solution(record) {
+  const cache = {};
+  const ans = [];
+
+  record.forEach(sentance => {
+    const [command, uid, nick] = sentance.split(' ');
+
+    if (command === 'Enter') {
+      cache[uid] = nick;
+      ans.push(`${uid}님이 들어왔습니다.`);
+    } else if (command === 'Change') {
+      cache[uid] = nick;
+    } else {
+      ans.push(`${uid}님이 나갔습니다.`);
+    }
+  });
+
+  return ans.map(v => {
+    const uidIdx = v.indexOf('님');
+    v = v.replace(v.slice(0, uidIdx), cache[v.slice(0, uidIdx)]);
+
+    return v;
+  });
+}
+
+// 첫번째 풀이
 function solution(record) {
   const ans = [];
   const cache = {};
