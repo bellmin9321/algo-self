@@ -1,3 +1,30 @@
+// 2nd solution: ⭕️ Solved(10min)  23.05.14
+function solution(s) {
+  let ans = '';
+  const cache = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+
+  for (let i = 0; i < cache.length; i++) {
+    // 정규식 풀이
+    // let reg = new RegExp(`${cache[i]}`, 'g');
+    // s = s.replace(reg, i);
+    s = s.replaceAll(cache[i], i);
+  }
+
+  return +s;
+}
+
+// 첫번째 풀이
 function solution(s) {
   const sObj = {
     0: 'zero',
