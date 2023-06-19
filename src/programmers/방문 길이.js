@@ -1,3 +1,26 @@
+// 2번쨰 풀이: ❌ NotSolved(1hour)
+function solution(dirs) {
+  const pos = [0, 0];
+  const cache = {};
+
+  for (let i = 0; i < dirs.length; i++) {
+    const [x, y] = [...pos];
+
+    if (dirs[i] === 'L' && Math.abs(x) < 5) pos[0]--;
+    else if (dirs[i] === 'R' && Math.abs(x) < 5) pos[0]++;
+    else if (dirs[i] === 'U' && Math.abs(y) < 5) pos[1]++;
+    else if (dirs[i] === 'D' && Math.abs(y) < 5) pos[1]--;
+
+    if (x === pos[0] && y === pos[1]) continue;
+
+    cache[`${x}to${pos[0]}/${y}to${pos[1]}`] = 0.5;
+    cache[`${pos[0]}to${x}/${y}to${pos[1]}`] = 0.5;
+    cache[`${x}to${pos[0]}/${pos[1]}to${y}`] = 0.5;
+  }
+
+  return Object.values(cache).reduce((a, b) => a + b);
+}
+
 // my solution: ⭕️ Solved -> time over & 질문하기 힌트 봄
 function solution(dirs) {
   let ans = 0;
