@@ -1,3 +1,43 @@
+// 2번째 풀이: ❌ NotSolved(30/32 통과) -> 2시간 품  23.05.14
+function solution(dartResult) {
+  let ans = [0];
+  let temp = dartResult[0];
+
+  for (let i = 1; i < dartResult.length; i++) {
+    if (!isNaN(dartResult[i]) && i > 1) {
+      ans.push(helper(temp));
+
+      if (!isNaN(dartResult[i + 1])) {
+        temp = '10';
+        i++;
+      } else {
+        temp = dartResult[i];
+      }
+    } else {
+      temp += dartResult[i];
+    }
+  }
+
+  function helper(s) {
+    let str = '';
+    let num = '';
+    [...s].forEach(v => (isNaN(v) ? (str += v) : (num += v)));
+
+    if (str[0] === 'S') num *= 1;
+    else if (str[0] === 'D') num **= 2;
+    else if (str[0] === 'T') num **= 3;
+
+    if (str[1] === '*')
+      return (ans[ans.length - 1] + num) * 2 - ans[ans.length - 1];
+    else if (str[1] === '#') num *= -1;
+
+    return num;
+  }
+
+  ans.push(helper(temp));
+  return ans.reduce((a, b) => a + b);
+}
+
 // my solution -> ❌ NotSolved: 시간초과(2시간)
 function solution(dartResult) {
   let ans = [];
