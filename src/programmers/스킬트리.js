@@ -1,3 +1,20 @@
+// 2번쨰 풀이: ⭕️ Solved(10min)
+function solution(skill, skill_trees) {
+  let ans = 0;
+
+  const newTrees = skill_trees.map(tree => {
+    let str = '';
+
+    [...tree].forEach(v => (str += skill.includes(v) ? v : ''));
+
+    return str;
+  });
+
+  newTrees.forEach(v => (skill.indexOf(v) === 0 ? ans++ : ans));
+
+  return ans;
+}
+
 // my solution
 function solution(skill, skill_trees) {
   const s = skill_trees.map(str =>
