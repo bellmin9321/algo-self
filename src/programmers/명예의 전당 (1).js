@@ -1,3 +1,28 @@
+// 2번째 풀이: ⭕️ Solved(50min) 23.05.14
+function solution(k, score) {
+  const ans = [score[0]];
+  const q = [score[0]];
+
+  for (let i = 1; i < score.length; i++) {
+    if (q.length === k) {
+      const min = Math.min(...q);
+      if (min > score[i]) {
+        ans.push(min);
+      } else {
+        const minIdx = q.findIndex(v => v === min);
+        q.splice(minIdx, 1, score[i]);
+        ans.push(Math.min(...q));
+      }
+    } else {
+      q.push(score[i]);
+      ans.push(Math.min(...q));
+    }
+  }
+
+  return ans;
+}
+
+// 첫번째 풀이: ⭕️ Solved
 function solution(k, score) {
   const ans = [];
   const temp = [];
