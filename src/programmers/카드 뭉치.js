@@ -1,3 +1,20 @@
+// 2번째 풀이: ⭕️ Solved(5min) 23.05.14
+function solution(cards1, cards2, goal) {
+  for (let i = 0; i < goal.length; i++) {
+    if (goal[i] === cards1[0]) {
+      cards1.shift();
+      continue;
+    } else if (goal[i] === cards2[0]) {
+      cards2.shift();
+      continue;
+    }
+
+    return 'No';
+  }
+
+  return 'Yes';
+}
+
 // my solution
 function solution(cards1, cards2, goal) {
   for (let i = 0; i < goal.length; i++) {
@@ -18,6 +35,7 @@ function solution(cards1, cards2, goal) {
 
   return goal.length ? 'No' : 'Yes';
 }
+
 // my solution 2
 function solution(cards1, cards2, goal) {
   for (let i = 0; i < goal.length; i++) {

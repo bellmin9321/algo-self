@@ -1,4 +1,4 @@
-// 2번째 풀이: ⭕️ Solved(30min)
+// 2번째 풀이: ⭕️ Solved(30min)  23.05.14
 function solution(s) {
   const ans = [];
   const arr = s
