@@ -1,3 +1,27 @@
+// 2번째 풀이: ⭕️ Solved(60min) 23.05.16
+// cache 이용
+function solution(n, lost, reserve) {
+  const realLost = lost.filter(v => !reserve.includes(v));
+  const realReserve = reserve.filter(v => !lost.includes(v));
+  realLost.sort((a, b) => a - b);
+
+  let ans = n - realLost.length;
+  const cache = {};
+
+  realReserve.forEach(v => (cache[v] = 1));
+  realLost.forEach(v => {
+    if (cache[v - 1]) {
+      cache[v - 1]--;
+      ans++;
+    } else if (cache[v + 1]) {
+      cache[v + 1]--;
+      ans++;
+    }
+  });
+
+  return ans;
+}
+
 // my solution
 function solution(n, lost, reserve) {
   let rf = reserve.filter(v => !lost.includes(v)).sort((a, b) => a - b);
@@ -17,7 +41,7 @@ function solution(n, lost, reserve) {
   return n - (lf.length - save);
 }
 
-// best
+// best: ❌ NotSolved(21/25 통과)
 function solution(n, lost, reserve) {
   return (
     n -
