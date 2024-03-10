@@ -32,25 +32,25 @@ int: the length of the longest string chain
 */
 function longestChain(words) {
   words.sort((a, b) => a.length - b.length);
-  
+
   let ans = 1;
   const cache = {};
-  
+
   for (const word of words) {
-      cache[word] = 1;
+    cache[word] = 1;
   }
-  
+
   for (const word of words) {
-      let length = 1;
-      
-      for (let i = 0; i < word.length; i++) {
-          const reducedWord = word.slice(0, i) + word.slice(i + 1);
-          length = Math.max(length, (cache[reducedWord] || 0) + 1);
-      }
-      
-      cache[word] = length;
-      ans = Math.max(ans, length);
+    let length = 1;
+
+    for (let i = 0; i < word.length; i++) {
+      const reducedWord = word.slice(0, i) + word.slice(i + 1);
+      length = Math.max(length, (cache[reducedWord] || 0) + 1);
+    }
+
+    cache[word] = length;
+    ans = Math.max(ans, length);
   }
-  
+
   return ans;
 }
