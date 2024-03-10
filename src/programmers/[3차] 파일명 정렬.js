@@ -139,6 +139,55 @@ function solution(files) {
   return sorted.map(v => files[v.index]);
 }
 
+// Try4 (통과: 9/20)
+function solution(files) {
+  const newFiles = files.map((file) => {
+      let HEAD = '';
+      let NUMBER = '';
+      let TAIL = '';
+      let isHEAD = true;
+      let isNumber = false;
+      let isTAIL = false;
+      
+      for (let i = 0; i < file.length; i++) {
+          const char = file[i];
+          // console.log(HEAD,NUMBER,TAIL)
+          if (isHEAD) {
+              if (!isNaN(char)) {
+                  isHEAD = false;
+                  isNumber = true;
+                  NUMBER += String(char);
+              } else {
+                  HEAD += char;
+              }
+          } else if (isNumber) {
+              if (isNaN(char) || char === ' ') {
+                  isNumber = false;
+                  isTAIL = true;
+                  TAIL += char;
+              } else {
+                  NUMBER += String(char);
+              }
+          } else if (isTAIL) {
+              TAIL += char;
+          }
+    }
+      
+      return [HEAD, NUMBER, TAIL];
+  })
+
+  return newFiles.sort((a, b) => {
+     const isSameHead = a[0].toLowerCase() === b[0].toLowerCase();
+     
+     if (isSameHead) {
+         return a[1] * 1 - b[1] * 1;
+     }
+     
+      return a[0].toLowerCase() < b[0].toLowerCase() ? -1 : 1;
+ })
+  .map(file => file.join(''))
+}
+
 // best
 function solution(files) {
   let answerWrap = files.map((file, index) => ({ file, index }));
