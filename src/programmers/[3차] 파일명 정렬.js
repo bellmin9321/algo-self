@@ -141,51 +141,52 @@ function solution(files) {
 
 // Try4 (통과: 9/20)
 function solution(files) {
-  const newFiles = files.map((file) => {
-      let HEAD = '';
-      let NUMBER = '';
-      let TAIL = '';
-      let isHEAD = true;
-      let isNumber = false;
-      let isTAIL = false;
-      
-      for (let i = 0; i < file.length; i++) {
-          const char = file[i];
-          // console.log(HEAD,NUMBER,TAIL)
-          if (isHEAD) {
-              if (!isNaN(char)) {
-                  isHEAD = false;
-                  isNumber = true;
-                  NUMBER += String(char);
-              } else {
-                  HEAD += char;
-              }
-          } else if (isNumber) {
-              if (isNaN(char) || char === ' ') {
-                  isNumber = false;
-                  isTAIL = true;
-                  TAIL += char;
-              } else {
-                  NUMBER += String(char);
-              }
-          } else if (isTAIL) {
-              TAIL += char;
-          }
-    }
-      
-      return [HEAD, NUMBER, TAIL];
-  })
+  const newFiles = files.map(file => {
+    let HEAD = '';
+    let NUMBER = '';
+    let TAIL = '';
+    let isHEAD = true;
+    let isNumber = false;
+    let isTAIL = false;
 
-  return newFiles.sort((a, b) => {
-     const isSameHead = a[0].toLowerCase() === b[0].toLowerCase();
-     
-     if (isSameHead) {
-         return a[1] * 1 - b[1] * 1;
-     }
-     
+    for (let i = 0; i < file.length; i++) {
+      const char = file[i];
+      // console.log(HEAD,NUMBER,TAIL)
+      if (isHEAD) {
+        if (!isNaN(char)) {
+          isHEAD = false;
+          isNumber = true;
+          NUMBER += String(char);
+        } else {
+          HEAD += char;
+        }
+      } else if (isNumber) {
+        if (isNaN(char) || char === ' ') {
+          isNumber = false;
+          isTAIL = true;
+          TAIL += char;
+        } else {
+          NUMBER += String(char);
+        }
+      } else if (isTAIL) {
+        TAIL += char;
+      }
+    }
+
+    return [HEAD, NUMBER, TAIL];
+  });
+
+  return newFiles
+    .sort((a, b) => {
+      const isSameHead = a[0].toLowerCase() === b[0].toLowerCase();
+
+      if (isSameHead) {
+        return a[1] * 1 - b[1] * 1;
+      }
+
       return a[0].toLowerCase() < b[0].toLowerCase() ? -1 : 1;
- })
-  .map(file => file.join(''))
+    })
+    .map(file => file.join(''));
 }
 
 // best
@@ -196,9 +197,9 @@ function solution(files) {
     const reg = /(\D*)([0-9]*)/i;
     const A = a.match(reg);
     const B = b.match(reg);
-    
+
     const compareHead = A[1].toLowerCase().localeCompare(B[1].toLowerCase());
-    
+
     const compareNumber = (a, b) => {
       return parseInt(a) > parseInt(b) ? 1 : parseInt(a) < parseInt(b) ? -1 : 0;
     };

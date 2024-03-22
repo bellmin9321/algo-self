@@ -18,52 +18,51 @@ function solution(begin, target, words) {
 
 // ❌ NotSolved: My solution2 통과(4/5)
 function checkAlphabet(begin, word) {
-    let count = 0;
-    
-    for (let i = 0; i < word.length; i++) {
-        if (begin[i] !== word[i]) { 
-            count++;
-        }
+  let count = 0;
 
-        if (count > 1) {
-            return false;
-        }
+  for (let i = 0; i < word.length; i++) {
+    if (begin[i] !== word[i]) {
+      count++;
     }
-    
-    return true;
+
+    if (count > 1) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 const solution = function (begin, target, words) {
-    if (!words.includes(target)) {
-        return 0;
-    }
-    
-    const visit = new Array(words.length).fill(false);
-    let answer = 0;
-    
-    function DFS(begin) {
-        if (begin === target) {
-            return answer;
-        }
-        
-        for (let i = 0; i < words.length; i++) {
-            const word = words[i];
-            
-            if (checkAlphabet(begin, word) && !visit[i]) {
-                // console.log(begin, word)
-                answer += 1;
-                visit[i] = true;
+  if (!words.includes(target)) {
+    return 0;
+  }
 
-                DFS(word);
-            }
-        }
+  const visit = new Array(words.length).fill(false);
+  let answer = 0;
+
+  function DFS(begin) {
+    if (begin === target) {
+      return answer;
     }
-    
-    DFS(begin);
-    
-    return answer;
+
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+
+      if (checkAlphabet(begin, word) && !visit[i]) {
+        // console.log(begin, word)
+        answer += 1;
+        visit[i] = true;
+
+        DFS(word);
+      }
+    }
+  }
+
+  DFS(begin);
+
+  return answer;
 };
-
 
 // best
 function solution(begin, target, words) {
